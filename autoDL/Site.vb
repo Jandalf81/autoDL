@@ -79,7 +79,7 @@
         End Try
 
 finish:
-        'retval = Regex.Replace(retval, "\r\n|\r|\n", "")
+        retval = System.Text.RegularExpressions.Regex.Replace(retval, "\r\n|\r|\n", "")
         _urlData = retval
     End Sub
 End Class
