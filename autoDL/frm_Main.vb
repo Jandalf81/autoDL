@@ -61,4 +61,8 @@ Public Class frm_Main
             addToLog("finished download")
         End If
     End Sub
+
+    Private Sub downloadFromBandcamp_Album()
+        ' ToDo iterate through all tracks, download them
+    End Sub
 End Class
