@@ -33,6 +33,7 @@ Public Class frm_Main
     Private Sub downloadFromBandcamp()
         If (Regex.Match(site.url, "^http[s]{0,1}:\/\/.*\/album\/.*", RegexOptions.IgnoreCase).Success) Then
             addToLog("detected BandCamp Album site")
+            downloadFromBandcamp_Album()
         End If
 
         If (Regex.Match(site.url, "^http[s]{0,1}:\/\/.*\/track\/.*", RegexOptions.IgnoreCase).Success) Then
@@ -64,5 +65,20 @@ Public Class frm_Main
 
     Private Sub downloadFromBandcamp_Album()
         ' ToDo iterate through all tracks, download them
+        Dim matchColl As MatchCollection
+        Dim row As String
+        Dim tracknum As String
+
+        'matchColl = Regex.Matches(site.urlData, "<table class=""track_list track_table"" id=""track_table"">\s*?(?'row'<tr class=""track_row_view linked"".*?<\/tr>)\s*?<\/table>", RegexOptions.IgnoreCase)
+        matchColl = Regex.Matches(site.urlData, "(?'row'<tr class=""track_row_view linked"" (.|\s)*?<\/tr>)", RegexOptions.IgnoreCase)
+
+        For Each match As Match In matchColl
+            row = match.Groups("row").Value
+
+            ' ToDo extract track number from row
+            tracknum = Regex.Match(row, "<tr class=""track_row_view linked"" rel=""tracknum=(?'tracknumber'[[:digit:]]*)"" itemprop", RegexOptions.IgnoreCase).Groups("tracknumber").Value
+
+            MsgBox(tracknum, vbOKOnly)
+        Next
     End Sub
 End Class
