@@ -72,6 +72,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bandcamp_Album.vb" />
+    <Compile Include="Bandcamp_Track.vb" />
     <Compile Include="frm_Main.vb">
       <SubType>Form</SubType>
     </Compile>
