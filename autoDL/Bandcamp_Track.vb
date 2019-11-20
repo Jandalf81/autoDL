@@ -41,7 +41,7 @@ Public Class Bandcamp_Track
         If match.Success Then
             track = New Track(match.Groups(1).Value)
 
-            frm_Main.addToLog("found URL: " & track.url)
+            addToLog("found URL: " & track.url)
 
             ' extract metadata from site data
             track.artist = Regex.Match(Me.UrlData, "<span itemprop=""byArtist"">\s*?<a href="".*?"">(?'artist'.*?)<\/a>\s*?<\/span>", RegexOptions.IgnoreCase).Groups(1).Value
@@ -53,13 +53,13 @@ Public Class Bandcamp_Track
             track.album = tidyUp(track.album)
             track.title = tidyUp(track.title)
 
-            frm_Main.addToLog("downloading to ...")
+            addToLog("downloading to ...")
             If (trackNum <> 0) Then
                 track.download(toDirectory & track.artist & " - " & track.album & " - " & trackNum & " - " & track.title & ".mp3")
             Else
                 track.download(toDirectory & track.artist & " - " & track.album & " - " & track.title & ".mp3")
             End If
-            frm_Main.addToLog("finished download")
+            addToLog("finished download")
         End If
     End Sub
 
