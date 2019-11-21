@@ -27,6 +27,8 @@ Public Class frm_Main
         'web_Site.Navigate(txt_PasteHere.Text)
         'web_Site.Source = New Uri(txt_PasteHere.Text)
 
+        'getHTML(txt_PasteHere.Text)
+
         mySite = New Site(txt_PasteHere.Text)
 
         ' recognize supported sites by url or content

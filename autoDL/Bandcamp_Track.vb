@@ -53,7 +53,11 @@ Public Class Bandcamp_Track
             track.album = tidyUp(track.album)
             track.title = tidyUp(track.title)
 
-            addToLog("downloading to ...")
+            addToLog(vbTab + "found ARTIST: " + track.artist)
+            addToLog(vbTab + "found ALBUM: " + track.album)
+            addToLog(vbTab + "found TITLE: " + track.title)
+            addToLog(vbTab + "found URL: " + track.url)
+            addToLog("downloading to " + toDirectory + "...")
             If (trackNum <> 0) Then
                 track.download(toDirectory & track.artist & " - " & track.album & " - " & trackNum & " - " & track.title & ".mp3")
             Else
