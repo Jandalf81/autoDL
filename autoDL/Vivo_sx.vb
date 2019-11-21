@@ -34,6 +34,7 @@ Public Class Vivo_sx
         Dim name As String
         Dim url As String
 
+        addToLog("getting interpreted HTML...")
         Me.UrlData = getInterpretedHTML(Me.Url)
 
         name = Regex.Match(Me.UrlData, "<h1 class=""vivo-video-data-holder"" data-hash="".*?"" data-type=""video"">\s*?Watch (?'videoName'.*?)&nbsp;", RegexOptions.IgnoreCase).Groups(1).Value

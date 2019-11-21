@@ -21,7 +21,16 @@
         'Dim site As Uri = New Uri("http://127.0.0.1:4711")
 
         ' get chromedriver.exe here: http://chromedriver.storage.googleapis.com/index.html
-        Dim chrome As OpenQA.Selenium.IWebDriver = New OpenQA.Selenium.Chrome.ChromeDriver(My.Application.Info.DirectoryPath)
+        Dim chromeS = OpenQA.Selenium.Chrome.ChromeDriverService.CreateDefaultService(My.Application.Info.DirectoryPath)
+        chromeS.HideCommandPromptWindow = True
+
+        Dim chromeO = New OpenQA.Selenium.Chrome.ChromeOptions()
+        chromeO.AddArgument("headless")
+        'chromeO.BinaryLocation = My.Application.Info.DirectoryPath
+
+        Dim chrome As OpenQA.Selenium.IWebDriver = New OpenQA.Selenium.Chrome.ChromeDriver(chromeS, chromeO)
+        'Dim chrome As OpenQA.Selenium.IWebDriver = New OpenQA.Selenium.Chrome.ChromeDriver(My.Application.Info.DirectoryPath)
+
         chrome.Navigate().GoToUrl(url)
         retval = chrome.PageSource
 
