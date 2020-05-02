@@ -150,6 +150,7 @@ Partial Class frm_Main
         Me.txt_Log.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.txt_Log.Size = New System.Drawing.Size(830, 385)
         Me.txt_Log.TabIndex = 3
+        Me.txt_Log.WordWrap = False
         '
         'tab_PageSite
         '

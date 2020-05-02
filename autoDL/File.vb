@@ -1,49 +1,12 @@
-﻿Public Class Track
+﻿Public Class File
     Private _url As String
 
-    Private _artist As String
-    Private _album As String
-    Private _title As String
-    Private _tracknumber As Integer
-
-    Public Property url As String
+    Public Property Url As String
         Get
             Return _url
         End Get
         Set(value As String)
             _url = value
-        End Set
-    End Property
-    Public Property artist As String
-        Get
-            Return _artist
-        End Get
-        Set(value As String)
-            _artist = value
-        End Set
-    End Property
-    Public Property album As String
-        Get
-            Return _album
-        End Get
-        Set(value As String)
-            _album = value
-        End Set
-    End Property
-    Public Property title As String
-        Get
-            Return _title
-        End Get
-        Set(value As String)
-            _title = value
-        End Set
-    End Property
-    Public Property tracknumber As Integer
-        Get
-            Return _tracknumber
-        End Get
-        Set(value As Integer)
-            _tracknumber = value
         End Set
     End Property
 

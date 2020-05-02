@@ -77,7 +77,7 @@ Public Class frm_Main
         End With
 
         If (fbd.ShowDialog() = DialogResult.OK) Then
-            mySettings.SaveInDirectory = fbd.SelectedPath
+            mySettings.SaveInDirectory = fbd.SelectedPath & "\"
             txt_Settings_SaveIn.Text = mySettings.SaveInDirectory
         End If
     End Sub

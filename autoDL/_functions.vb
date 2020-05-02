@@ -20,6 +20,8 @@
 
         'Dim site As Uri = New Uri("http://127.0.0.1:4711")
 
+        ' ToDo move this into background worker as it is quite time consuming
+
         ' get chromedriver.exe here: http://chromedriver.storage.googleapis.com/index.html
         Dim chromeS = OpenQA.Selenium.Chrome.ChromeDriverService.CreateDefaultService(My.Application.Info.DirectoryPath)
         chromeS.HideCommandPromptWindow = True
@@ -39,6 +41,20 @@
 
         chrome.Close()
         chrome.Dispose()
+
+        Return retval
+    End Function
+
+    Public Function tidyUp(INstring As String) As String
+        Dim retval As String
+
+        retval = INstring.Replace(":", "_")
+        retval = retval.Replace("&quot;", "'") 'double quotes
+        retval = retval.Replace("&#39;", "'") 'single quote
+        retval = retval.Replace("&#8203;", "") 'zero-width space
+        retval = retval.Replace("&amp;", "&")
+        retval = retval.Replace("/", "_")
+        retval = retval.Replace("?", "_")
 
         Return retval
     End Function

@@ -39,7 +39,7 @@ Public Class Vivo_sx
 
         name = Regex.Match(Me.UrlData, "<h1 class=""vivo-video-data-holder"" data-hash="".*?"" data-type=""video"">\s*?Watch (?'videoName'.*?)&nbsp;", RegexOptions.IgnoreCase).Groups(1).Value
         ' TODO url is not in source!
-        url = Regex.Match(Me.UrlData, "<source src=""(?'videoURL'.*?)"" type=""video\/mp4"" size=""720"">", RegexOptions.IgnoreCase).Groups(1).Value
+        url = Regex.Match(Me.UrlData, "<source src=""(?'videoURL'.*?)"" type=""video\/mp4"" size=""\d{1,4}"">", RegexOptions.IgnoreCase).Groups(1).Value
 
         addToLog(vbTab + "found NAME: " + name)
         addToLog(vbTab + "found URL: " + url)

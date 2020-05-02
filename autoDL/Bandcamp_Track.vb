@@ -67,18 +67,18 @@ Public Class Bandcamp_Track
         End If
     End Sub
 
-    Private Function tidyUp(INstring As String) As String
-        Dim retval As String
-
-        retval = INstring.Replace(":", "_")
-        retval = retval.Replace("&quot;", "'") 'double quotes
-        retval = retval.Replace("&#39;", "'") 'single quote
-        retval = retval.Replace("&#8203;", "") 'zero-width space
-        retval = retval.Replace("&amp;", "&")
-        retval = retval.Replace("/", "_")
-        retval = retval.Replace("?", "_")
-
-        Return retval
-    End Function
+    ' Private Function tidyUp(INstring As String) As String
+    '     Dim retval As String
+    '
+    '     retval = INstring.Replace(":", "_")
+    '     retval = retval.Replace("&quot;", "'") 'double quotes
+    '     retval = retval.Replace("&#39;", "'") 'single quote
+    '     retval = retval.Replace("&#8203;", "") 'zero-width space
+    '     retval = retval.Replace("&amp;", "&")
+    '     retval = retval.Replace("/", "_")
+    '     retval = retval.Replace("?", "_")
+    '
+    '     Return retval
+    ' End Function
 
 End Class
