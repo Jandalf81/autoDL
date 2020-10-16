@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="Bandcamp_Album.vb" />
     <Compile Include="Bandcamp_Track.vb" />
+    <Compile Include="DwellingOfDuels_Duel.vb" />
     <Compile Include="File.vb" />
     <Compile Include="frm_Main.vb">
       <SubType>Form</SubType>

@@ -37,16 +37,21 @@ Public Class Bandcamp_Track
         Dim track As Track
         Dim match As Match
 
-        match = Regex.Match(Me.UrlData, """file"":\{""mp3-128"":""(?'trackUrl'http[s]?:\/\/.*?)""\}", RegexOptions.IgnoreCase)
+        ' match = Regex.Match(Me.UrlData, """file"":\{""mp3-128"":""(?'trackUrl'http[s]?:\/\/.*?)""\}", RegexOptions.IgnoreCase)
+        match = Regex.Match(Me.UrlData, "&quot;file&quot;:\{&quot;mp3-128&quot;:&quot;(?'trackUrl'http[s]?:\/\/.*?)&quot;\}", RegexOptions.IgnoreCase)
         If match.Success Then
             track = New Track(match.Groups(1).Value)
 
             addToLog("found URL: " & track.url)
 
             ' extract metadata from site data
-            track.artist = Regex.Match(Me.UrlData, "<span itemprop=""byArtist"">\s*?<a href="".*?"">(?'artist'.*?)<\/a>\s*?<\/span>", RegexOptions.IgnoreCase).Groups(1).Value
-            track.album = Regex.Match(Me.UrlData, "<span class=""fromAlbum"" itemprop=""name"">\s*?(?'album'.*?)\s*?<\/span>", RegexOptions.IgnoreCase).Groups(1).Value
-            track.title = Regex.Match(Me.UrlData, "<h2 class=""trackTitle"" itemprop=""name"">\s*(?'title'.*?)\s*?<\/h2>", RegexOptions.IgnoreCase).Groups(1).Value
+            'track.artist = Regex.Match(Me.UrlData, """ by\s*?<span>\s*?<a href="".*?"">(?'artist'.*?)<\/a>\s*?<\/span>", RegexOptions.IgnoreCase).Groups(1).Value
+            'track.album = Regex.Match(Me.UrlData, "<span class=""fromAlbum"" itemprop=""name"">\s*?(?'album'.*?)\s*?<\/span>", RegexOptions.IgnoreCase).Groups(1).Value
+            'track.title = Regex.Match(Me.UrlData, "<h2 class=""trackTitle"" itemprop=""name"">\s*(?'title'.*?)\s*?<\/h2>", RegexOptions.IgnoreCase).Groups(1).Value
+
+            track.album = Regex.Match(Me.UrlData, "<h3 class=""albumTitle"">\s*?from\s*?<span>\s*?<a href=.*?<span class=""fromAlbum"">(?'album'.*?)<\/span><\/a><\/span>\s*?by\s*?<span>\s*?<a href=.*?>(?'artist'.*?)<\/a>\s*?<\/span>", RegexOptions.IgnoreCase).Groups("album").Value
+            track.artist = Regex.Match(Me.UrlData, "<h3 class=""albumTitle"">\s*?from\s*?<span>\s*?<a href=.*?<span class=""fromAlbum"">(?'album'.*?)<\/span><\/a><\/span>\s*?by\s*?<span>\s*?<a href=.*?>(?'artist'.*?)<\/a>\s*?<\/span>", RegexOptions.IgnoreCase).Groups("artist").Value
+            track.title = Regex.Match(Me.UrlData, "<h2 class=""trackTitle"">\s*(?'title'.*?)\s*?<\/h2>", RegexOptions.IgnoreCase).Groups("title").Value
 
             ' replace illegal characters in metadata
             track.artist = tidyUp(track.artist)

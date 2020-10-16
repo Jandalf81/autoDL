@@ -54,6 +54,15 @@ Public Class frm_Main
             Exit Sub
         End If
 
+        ' Dwelling of Duels
+        If (Regex.Match(mySite.url, "^http[s]{0,1}:\/\/dwellingofduels\.net\/", RegexOptions.IgnoreCase).Success) Then
+            addToLog("detected DwellingOfDuels.net")
+
+            Dim dod As New DwellingOfDuels_Duel(mySite.url, mySite.urlData)
+            dod.download(mySettings.SaveInDirectory)
+
+            Exit Sub
+        End If
         'vivo.sx
         If (Regex.Match(mySite.url, "^http[s]{0,1}:\/\/vivo\.sx\/", RegexOptions.IgnoreCase).Success) Then
             addToLog("detected Vivo.sx")

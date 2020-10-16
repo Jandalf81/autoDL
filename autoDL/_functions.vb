@@ -55,6 +55,7 @@
         retval = retval.Replace("&amp;", "&")
         retval = retval.Replace("/", "_")
         retval = retval.Replace("?", "_")
+        retval = retval.Replace("*", "_")
 
         Return retval
     End Function
